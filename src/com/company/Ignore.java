@@ -1,5 +1,8 @@
 package com.company;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -9,27 +12,19 @@ public class Ignore
 
     public void getIgnore_Words()
     {
-        System.out.println("Please provide Words to Ignore (1 word at a time) : ");
-        System.out.println("To stop providing Words to Ignore, type \"exit\" ");
-        Keep_Getting_Line();
-        System.out.println(Ignore_Words);
+        System.out.println("Please provide file path to list of Words to ignore ");
+        GetFilePath();
+        //System.out.println(Ignore_Words);
     }
 
-    private void Keep_Getting_Line()
+    private void GetFilePath()
     {
-        while(true)
-        {
             Scanner InputReader = new Scanner(System.in);
-            String Word_to_Ignore = InputReader.next(); // get only 1 word
-
-            if(Word_to_Ignore.toLowerCase().compareTo("exit") == 0)
-                break;
-
-            add_Word_to_Ignore(Word_to_Ignore);
-        }
+            String FilePath = InputReader.nextLine(); // get file Path
+            Read_Word_to_Ignore(Ignore_Words, FilePath);
     }
 
-    private void add_Word_to_Ignore(String Word_to_Ignore)
+    public void add_Word_to_Ignore(String Word_to_Ignore)
     {
         Ignore_Words.add(Word_to_Ignore);
     }
@@ -37,6 +32,44 @@ public class Ignore
     public Vector<String> Get_List_of_Ignore_Words()
     {
         return Ignore_Words;
+    }
+
+    public void Read_Word_to_Ignore(Vector<String> Ignore_Words_List, String filepath)
+    {
+        boolean bool = false;
+
+        do {
+            try
+            {
+                String line;
+                BufferedReader br = new BufferedReader(new FileReader(filepath));
+                //while ((SentenceHolder.Insert(br.readLine())) != null){
+                while ((line = br.readLine()) != null) {
+
+                    Ignore_Words_List.add(line);
+                    br.mark(1000000000);
+
+                    if ((line = br.readLine()) != null) //!line.equals("\n")
+                    {
+                        br.reset();
+                    } else
+                        break;
+                }
+                bool = false;
+                break;
+            }
+            catch (java.io.FileNotFoundException e) {
+                System.out.println("Error File Not found");
+                System.out.println("Please type \"input\" again to retry another file path or type \"exit\" to quit");
+                bool = true;
+
+            } catch (java.io.IOException e) {
+                System.out.println("Error Reading File");
+                System.out.println("Please type \"input\" again to retry another file path or type \"exit\" to quit");
+                bool = true;
+            }
+
+        }while(bool);
     }
 }
 

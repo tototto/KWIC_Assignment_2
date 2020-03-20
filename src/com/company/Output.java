@@ -9,7 +9,7 @@ public class Output
     private File file;
     private Vector<String> output;
 
-    Output(Vector<String> output)
+    public Output(Vector<String> output)
     {
         this.output = output;
     }

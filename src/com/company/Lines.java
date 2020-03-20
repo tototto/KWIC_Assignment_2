@@ -11,7 +11,7 @@ public class Lines
         Sentence_Shifter = new CircularShift(OutputStorage);
     }
 
-    Lines()
+    public Lines()
     {}
 
     public String Insert(String line)
