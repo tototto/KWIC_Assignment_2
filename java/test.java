@@ -39,7 +39,7 @@ public class test
         System.setIn(in); // Reset System.in to its original
 
         // read input and perform [Circular Shifting + Alphabetizing]
-        Input.FileReader("C:\\Users\\P0500236\\Desktop\\U\\Requirements\\TIC3001-Updated-Assignment1-testcases\\TIC3001-Assignment1-testcases\\testcase1\\TitlesInput1.txt");
+        Input.FileReader("TIC3001-Assignment1-testcases\\testcase1\\TitlesInput1.txt");
 
         // Read Correct Expected Output into test
         Read_Expected_Output(CorrectOutput);
@@ -105,7 +105,7 @@ public class test
             try
             {
                 String line;
-                BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\P0500236\\Desktop\\U\\Requirements\\TIC3001-Updated-Assignment1-testcases\\TIC3001-Assignment1-testcases\\testcase1\\Output1.txt"));
+                BufferedReader br = new BufferedReader(new FileReader("TIC3001-Assignment1-testcases\\testcase1\\Output1.txt"));
                 //while ((SentenceHolder.Insert(br.readLine())) != null){
                 while ((line = br.readLine()) != null) {
 
