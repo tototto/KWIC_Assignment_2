@@ -1,6 +1,4 @@
-package com.company;
-import java.util.StringJoiner;
-import java.util.Arrays;
+package main.company;
 
 public class CircularShifter
 {

@@ -1,12 +1,7 @@
-package com.company;
+package main.company;
 
-import javax.sound.sampled.Control;
-import javax.sound.sampled.Line;
-import javax.sound.sampled.LineListener;
-import javax.sound.sampled.LineUnavailableException;
 import java.util.Scanner;
 import java.util.Vector;
-import java.util.Iterator;
 
 public class Main
 {

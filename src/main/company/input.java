@@ -1,8 +1,7 @@
-package com.company;
+package main.company;
 import java.io.*;
 import java.util.Scanner;
 import java.util.Vector;
-import java.util.stream.Stream;
 
 public class input
 {

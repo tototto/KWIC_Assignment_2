@@ -1,4 +1,4 @@
-package com.company;
+package main.company;
 import java.util.*;
 
 public class Lines

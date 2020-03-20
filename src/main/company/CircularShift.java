@@ -1,6 +1,5 @@
-package com.company;
+package main.company;
 import java.util.Vector;
-import java.util.Arrays;
 
 public class CircularShift
 {

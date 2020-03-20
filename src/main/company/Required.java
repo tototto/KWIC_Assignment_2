@@ -1,40 +1,56 @@
-package com.company;
-
+package main.company;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class Ignore
+public class Required
 {
-    Vector<String> Ignore_Words = new Vector<String>();
+    Vector<String> Required = new Vector<String>();
+    Ignore Words_to_Ignore;
 
-    public void getIgnore_Words()
+    public Required(Ignore Words_to_Ignore)
     {
-        System.out.println("Please provide file path to list of Words to ignore ");
+        this.Words_to_Ignore = Words_to_Ignore;
+    }
+
+    public Vector<String> Get_List_of_Required_Words()
+    {
+        return Required;
+    }
+
+    public void getRequired_Words()
+    {
+        System.out.println("Please provide file path to list of Words Required ");
         GetFilePath();
-        //System.out.println(Ignore_Words);
+        //System.out.println(Required);
     }
 
     private void GetFilePath()
     {
             Scanner InputReader = new Scanner(System.in);
             String FilePath = InputReader.nextLine(); // get file Path
-            Read_Word_to_Ignore(Ignore_Words, FilePath);
+            Read_Word_Required(FilePath);
     }
 
-    public void add_Word_to_Ignore(String Word_to_Ignore)
+    public void add_Word_Required(String Words_Required)
     {
-        Ignore_Words.add(Word_to_Ignore);
+        if(check_Word_is_Already_in_Ignore_List(Words_Required) == false)
+            Required.add(Words_Required);
+        //else
+            // nothing will be added
     }
 
-    public Vector<String> Get_List_of_Ignore_Words()
+    private  boolean check_Word_is_Already_in_Ignore_List(String Words_Requireid)
     {
-        return Ignore_Words;
+        if(Words_to_Ignore.Get_List_of_Ignore_Words() == null || Words_to_Ignore.Get_List_of_Ignore_Words().isEmpty())
+            return false;
+
+        boolean result = Words_to_Ignore.Get_List_of_Ignore_Words().contains(Words_Requireid);
+        return result;
     }
 
-    public void Read_Word_to_Ignore(Vector<String> Ignore_Words_List, String filepath)
+    public void Read_Word_Required(String filepath)
     {
         boolean bool = false;
 
@@ -46,7 +62,7 @@ public class Ignore
                 //while ((SentenceHolder.Insert(br.readLine())) != null){
                 while ((line = br.readLine()) != null) {
 
-                    Ignore_Words_List.add(line);
+                    add_Word_Required(line);
                     br.mark(1000000000);
 
                     if ((line = br.readLine()) != null) //!line.equals("\n")
@@ -72,4 +88,3 @@ public class Ignore
         }while(bool);
     }
 }
-
